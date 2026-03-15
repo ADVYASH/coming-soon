@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASRP III Launch</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+
+background:
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.95)),
+url("https://cdn.discordapp.com/attachments/1480621255223935127/1482059146336665772/los-angeles-downtown-buildings-night.jpg")
+center/cover no-repeat;
+}
+
+/* MAIN PANEL */
+
+.container{
+background:rgba(0,0,0,.65);
+padding:60px;
+border-radius:12px;
+border:1px solid rgba(255,120,0,.4);
+box-shadow:0 0 25px rgba(255,120,0,.3);
+}
+
+/* TITLE */
+
+h1{
+font-size:55px;
+color:#ff7a00;
+margin-bottom:15px;
+text-shadow:0 0 20px #ff7a00;
+}
+
+.subtitle{
+opacity:.8;
+margin-bottom:40px;
+font-size:18px;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+display:flex;
+gap:30px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.time-box{
+background:rgba(0,0,0,.7);
+padding:25px 35px;
+border-radius:10px;
+border:1px solid rgba(255,120,0,.3);
+min-width:120px;
+transition:.3s;
+}
+
+.time-box:hover{
+box-shadow:0 0 15px #ff7a00;
+}
+
+.time{
+font-size:40px;
+color:#ff7a00;
+font-weight:bold;
+}
+
+.label{
+margin-top:5px;
+font-size:14px;
+opacity:.7;
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+h1{
+font-size:36px;
+}
+
+.container{
+padding:40px 25px;
+}
+
+.time{
+font-size:30px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ASRP III</h1>
+<div class="subtitle">
+Official website launches on <b>23 April 2026</b>
+</div>
+
+<div class="countdown">
+
+<div class="time-box">
+<div class="time" id="days">0</div>
+<div class="label">Days</div>
+</div>
+
+<div class="time-box">
+<div class="time" id="hours">0</div>
+<div class="label">Hours</div>
+</div>
+
+<div class="time-box">
+<div class="time" id="minutes">0</div>
+<div class="label">Minutes</div>
+</div>
+
+<div class="time-box">
+<div class="time" id="seconds">0</div>
+<div class="label">Seconds</div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const launchDate = new Date("April 23, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+const now = new Date().getTime();
+const distance = launchDate - now;
+
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
+
+</script>
+
+</body>
+</html>
